@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
-import { Loader2, UserCheck } from 'lucide-react'
 
 export function AttendanceReportPage() {
+  const navigate = useNavigate()
   const [users, setUsers] = useState([])
   const [selectedUser, setSelectedUser] = useState('')
   const [selectedDate, setSelectedDate] = useState(() => new Date().toISOString().slice(0, 10))
@@ -91,7 +92,7 @@ export function AttendanceReportPage() {
       ) : sessions.length === 0 ? (
         <p className="text-neutral-500 dark:text-neutral-400">Tidak ada data absensi.</p>
       ) : (
-        <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow overflow-hidden border border-neutral-200 dark:border-neutral-800">
+        <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow overflow-hidden overflow-x-auto border border-neutral-200 dark:border-neutral-800">
           <table className="min-w-full text-left text-sm">
             <thead className="bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200">
               <tr>
@@ -103,7 +104,11 @@ export function AttendanceReportPage() {
             </thead>
             <tbody className="divide-y divide-neutral-200 dark:divide-neutral-800">
               {sessions.map((session) => (
-                <tr key={session.id}>
+                <tr
+                  key={session.id}
+                  onClick={() => navigate(`/laporan-absensi/${session.id}`)}
+                  className="cursor-pointer hover:bg-neutral-50 dark:hover:bg-neutral-800/60 transition"
+                >
                   <td className="px-4 py-3 text-neutral-900 dark:text-neutral-100 whitespace-nowrap">
                     {getUserLabel(session.user_id)}
                   </td>

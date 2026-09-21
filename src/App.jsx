@@ -9,6 +9,7 @@ import { SalesPage } from './pages/SalesPage'
 import { ExpensesPage } from './pages/ExpensesPage'
 import { ReportsPage } from './pages/ReportsPage'
 import { AttendanceReportPage } from './pages/AttendanceReportPage'
+import { AttendanceDetailPage } from './pages/AttendanceDetailPage'
 import { Layout } from './components/Layout'
 import { PrivateRoute } from './components/PrivateRoute'
 
@@ -39,6 +40,7 @@ function App() {
             >
               <Route path="/laporan" element={<ReportsPage />} />
               <Route path="/laporan-absensi" element={<AttendanceReportPage />} />
+              <Route path="/laporan-absensi/:id" element={<AttendanceDetailPage />} />
             </Route>
 
             <Route path="*" element={<Navigate to="/" replace />} />

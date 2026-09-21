@@ -3,6 +3,7 @@ import { supabase } from '../lib/supabase'
 import { formatRupiah } from '../utils/formatters'
 import { todayISO, startOfDayISO, endOfDayISO } from '../utils/formatters'
 import { BarChart3, Search } from 'lucide-react'
+import { PageHeader } from '../components/PageHeader'
 
 export function ReportsPage() {
   const [start, setStart] = useState(todayISO())
@@ -47,7 +48,7 @@ export function ReportsPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">Laporan Keuangan</h1>
+      <PageHeader title="Laporan Keuangan" />
 
       <form
         onSubmit={fetchReport}

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { ArrowLeft, MapPin } from 'lucide-react'
+import { PageHeader } from '../components/PageHeader'
 
 export function AttendanceDetailPage() {
   const { id } = useParams()
@@ -80,14 +81,8 @@ export function AttendanceDetailPage() {
 
   return (
     <div className="max-w-2xl mx-auto space-y-6">
-      <button
-        onClick={() => navigate('/laporan-absensi')}
-        className="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-brand-600 transition"
-      >
-        <ArrowLeft className="w-4 h-4" /> Kembali ke Laporan Absensi
-      </button>
 
-      <h1 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">Detail Absensi</h1>
+      <PageHeader title="Detail Absensi" backTo="/laporan-absensi" backLabel="Laporan Absensi" />
 
       <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow p-6 border border-neutral-200 dark:border-neutral-800 space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

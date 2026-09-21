@@ -3,6 +3,7 @@ import { supabase } from '../lib/supabase'
 import { useAuth } from '../context/AuthContext'
 import { formatRupiah } from '../utils/formatters'
 import { Receipt } from 'lucide-react'
+import { PageHeader } from '../components/PageHeader'
 
 export function ExpensesPage() {
   const { user } = useAuth()
@@ -33,7 +34,7 @@ export function ExpensesPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">Pengeluaran</h1>
+      <PageHeader title="Pengeluaran" />
 
       <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow p-4 sm:p-6 border border-neutral-200 dark:border-neutral-800 max-w-xl">
         <form onSubmit={handleSubmit} className="space-y-4">

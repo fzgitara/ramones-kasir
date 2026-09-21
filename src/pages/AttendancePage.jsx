@@ -3,6 +3,7 @@ import { Loader2, LogIn, LogOut } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../context/AuthContext'
 import { useGeolocation } from '../hooks/useGeolocation'
+import { PageHeader } from '../components/PageHeader'
 
 function getDeviceInfo() {
   return {
@@ -98,7 +99,7 @@ export function AttendancePage() {
 
   return (
     <div className="max-w-2xl mx-auto space-y-6">
-      <h1 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">Absensi</h1>
+      <PageHeader title="Absensi" />
 
       <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow p-6 border border-neutral-200 dark:border-neutral-800">
         <p className="text-neutral-600 dark:text-neutral-300 mb-6">

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../context/AuthContext'
 import { formatRupiah, todayISO, startOfDayISO, endOfDayISO } from '../utils/formatters'
+import { PageHeader } from '../components/PageHeader'
 import { LayoutDashboard, ClipboardCheck, Package, ShoppingCart, Receipt, BarChart3, FileUser } from 'lucide-react'
 
 export function DashboardPage() {
@@ -43,7 +44,7 @@ export function DashboardPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">Dashboard</h1>
+      <PageHeader title="Dashboard" backTo={null} />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow p-6 border border-neutral-200 dark:border-neutral-800">

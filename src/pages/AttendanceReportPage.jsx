@@ -1,6 +1,7 @@
+import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
+import { PageHeader } from '../components/PageHeader'
 
 export function AttendanceReportPage() {
   const navigate = useNavigate()
@@ -55,7 +56,7 @@ export function AttendanceReportPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">Laporan Absensi</h1>
+      <PageHeader title="Laporan Absensi" />
 
       <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow p-4 sm:p-6 border border-neutral-200 dark:border-neutral-800">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -64,7 +65,7 @@ export function AttendanceReportPage() {
             <select
               value={selectedUser}
               onChange={(e) => setSelectedUser(e.target.value)}
-              className="input"
+              className="select"
             >
               <option value="">Semua user</option>
               {users.map((u) => (

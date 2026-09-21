@@ -3,6 +3,7 @@ import { supabase } from '../lib/supabase'
 import { useAuth } from '../context/AuthContext'
 import { formatRupiah } from '../utils/formatters'
 import { Plus, Minus, Trash2, Edit3 } from 'lucide-react'
+import { PageHeader } from '../components/PageHeader'
 
 export function ProductsPage() {
   const { role } = useAuth()
@@ -70,7 +71,7 @@ export function ProductsPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">Produk</h1>
+      <PageHeader title="Produk" />
 
       <form
         onSubmit={handleCreate}

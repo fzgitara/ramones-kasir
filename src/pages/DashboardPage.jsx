@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../context/AuthContext'
 import { formatRupiah, todayISO, startOfDayISO, endOfDayISO } from '../utils/formatters'
-import { LayoutDashboard, ClipboardCheck, Package, ShoppingCart, Receipt, BarChart3 } from 'lucide-react'
+import { LayoutDashboard, ClipboardCheck, Package, ShoppingCart, Receipt, BarChart3, FileUser } from 'lucide-react'
 
 export function DashboardPage() {
   const { role } = useAuth()
@@ -35,7 +35,10 @@ export function DashboardPage() {
     { to: '/produk', label: 'Produk', icon: Package },
     { to: '/penjualan', label: 'Penjualan', icon: ShoppingCart },
     { to: '/pengeluaran', label: 'Pengeluaran', icon: Receipt },
-    ...(role === 'admin' ? [{ to: '/laporan', label: 'Laporan', icon: BarChart3 }] : []),
+    ...(role === 'admin' ? [
+      { to: '/laporan', label: 'Laporan', icon: BarChart3 },
+      { to: '/laporan-absensi', label: 'Laporan Absensi', icon: FileUser }
+    ] : []),
   ]
 
   return (

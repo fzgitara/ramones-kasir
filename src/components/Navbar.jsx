@@ -11,6 +11,7 @@ const links = [
   { to: '/penjualan', label: 'Penjualan' },
   { to: '/pengeluaran', label: 'Pengeluaran' },
   { to: '/laporan', label: 'Laporan', roles: ['admin'] },
+  { to: '/laporan-absensi', label: 'Lap. Absensi', roles: ['admin'] },
 ]
 
 export function Navbar() {

@@ -4,7 +4,7 @@ import { supabase } from '../lib/supabase'
 import { useAuth } from '../context/AuthContext'
 import { formatRupiah, todayISO, startOfDayISO, endOfDayISO } from '../utils/formatters'
 import { PageHeader } from '../components/PageHeader'
-import { LayoutDashboard, ClipboardCheck, Package, ShoppingCart, Receipt, BarChart3, FileUser } from 'lucide-react'
+import { ClipboardCheck, Package, ShoppingCart, Receipt, BarChart3, FileUser } from 'lucide-react'
 
 export function DashboardPage() {
   const { role } = useAuth()
@@ -12,15 +12,20 @@ export function DashboardPage() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    let ignore = false
+
     const fetchToday = async () => {
       setLoading(true)
-      const from = startOfDayISO(todayISO())
-      const to = endOfDayISO(todayISO())
+      const date = todayISO()
+      const from = startOfDayISO(date)
+      const to = endOfDayISO(date)
 
       const [salesRes, expensesRes] = await Promise.all([
         supabase.from('sales').select('total_price').gte('created_at', from).lte('created_at', to),
         supabase.from('expenses').select('total_price').gte('created_at', from).lte('created_at', to),
       ])
+
+      if (ignore) return
 
       setToday({
         sales: (salesRes.data || []).reduce((a, c) => a + (c.total_price || 0), 0),
@@ -28,7 +33,9 @@ export function DashboardPage() {
       })
       setLoading(false)
     }
+
     fetchToday()
+    return () => { ignore = true }
   }, [])
 
   const cards = [
@@ -38,7 +45,7 @@ export function DashboardPage() {
     { to: '/pengeluaran', label: 'Pengeluaran', icon: Receipt },
     ...(role === 'admin' ? [
       { to: '/laporan', label: 'Laporan', icon: BarChart3 },
-      { to: '/laporan-absensi', label: 'Laporan Absensi', icon: FileUser }
+      { to: '/laporan-absensi', label: 'Lap. Absensi', icon: FileUser }
     ] : []),
   ]
 

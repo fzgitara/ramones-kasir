@@ -88,7 +88,6 @@ export function ProductSearch({ products = [], value, onChange, placeholder = 'C
   return (
     <div className="relative" ref={wrapperRef}>
       <div className="relative">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400 pointer-events-none" />
         <input
           type="text"
           value={query}
@@ -104,6 +103,7 @@ export function ProductSearch({ products = [], value, onChange, placeholder = 'C
           className="input pl-9 pr-9"
           autoComplete="off"
         />
+        <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400 pointer-events-none" />
         {query && (
           <button
             type="button"

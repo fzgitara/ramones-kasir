@@ -127,7 +127,7 @@ export function ProductsPage() {
       ) : products.length === 0 ? (
         <p className="text-neutral-500 dark:text-neutral-400">Belum ada produk.</p>
       ) : (
-        <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow overflow-hidden border border-neutral-200 dark:border-neutral-800">
+        <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow overflow-hidden overflow-x-auto border border-neutral-200 dark:border-neutral-800">
           <table className="min-w-full text-left text-sm">
             <thead className="bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200">
               <tr>

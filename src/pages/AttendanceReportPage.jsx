@@ -60,7 +60,7 @@ export function AttendanceReportPage() {
 
       <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow p-4 sm:p-6 border border-neutral-200 dark:border-neutral-800">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
+          <div className="min-w-0">
             <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">User</label>
             <select
               value={selectedUser}
@@ -76,7 +76,7 @@ export function AttendanceReportPage() {
             </select>
           </div>
 
-          <div>
+          <div className="min-w-0">
             <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">Tanggal</label>
             <input
               type="date"

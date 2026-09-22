@@ -56,11 +56,11 @@ export function ReportsPage() {
         className="bg-white dark:bg-neutral-900 rounded-2xl shadow p-4 sm:p-6 border border-neutral-200 dark:border-neutral-800"
       >
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-end">
-          <div>
+          <div className="min-w-0">
             <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">Dari</label>
             <input type="date" value={start} onChange={(e) => setStart(e.target.value)} required className="input" />
           </div>
-          <div>
+          <div className="min-w-0">
             <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">Sampai</label>
             <input type="date" value={end} onChange={(e) => setEnd(e.target.value)} required className="input" />
           </div>

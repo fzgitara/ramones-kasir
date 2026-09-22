@@ -103,8 +103,7 @@ export function ProductSearch({ products = [], value, onChange, placeholder = 'C
           className="input pl-9 pr-9"
           autoComplete="off"
         />
-        <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400 pointer-events-none" />
-        {query && (
+        {query ? (
           <button
             type="button"
             onClick={handleClear}
@@ -113,7 +112,7 @@ export function ProductSearch({ products = [], value, onChange, placeholder = 'C
           >
             <X className="w-4 h-4" />
           </button>
-        )}
+        ) : <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400 pointer-events-none" />}
       </div>
 
       {open && (
@@ -140,7 +139,7 @@ export function ProductSearch({ products = [], value, onChange, placeholder = 'C
                           : 'hover:bg-neutral-100 dark:hover:bg-neutral-700'
                     }`}
                   >
-                    <span className="text-neutral-900 dark:text-neutral-100">
+                    <span className="text-neutral-900 dark:text-neutral-500">
                       {product.name}
                       {outOfStock && (
                         <span className="ml-2 text-xs text-red-500">stok habis</span>

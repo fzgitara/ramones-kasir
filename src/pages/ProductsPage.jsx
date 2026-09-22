@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../context/AuthContext'
 import { formatRupiah } from '../utils/formatters'
-import { Plus, Minus, Trash2, Edit3 } from 'lucide-react'
+import { Plus, Minus, Trash2 } from 'lucide-react'
 import { PageHeader } from '../components/PageHeader'
 
 export function ProductsPage() {
   const { role } = useAuth()
+  const navigate = useNavigate()
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
   const [form, setForm] = useState({ name: '', price: '', stock: '' })
@@ -139,7 +142,11 @@ export function ProductsPage() {
             </thead>
             <tbody className="divide-y divide-neutral-200 dark:divide-neutral-800">
               {products.map((product) => (
-                <tr key={product.id}>
+                <tr
+                  key={product.id}
+                  onClick={() => navigate(`/produk/${product.id}`)}
+                  className="cursor-pointer hover:bg-neutral-50 dark:hover:bg-neutral-800/60 transition"  
+                >
                   <td className="px-4 py-3 text-neutral-900 dark:text-neutral-100">{product.name}</td>
                   <td className="px-4 py-3 text-neutral-700 dark:text-neutral-300">{formatRupiah(product.price)}</td>
                   <td className="px-4 py-3 text-neutral-700 dark:text-neutral-300">{product.stock}</td>

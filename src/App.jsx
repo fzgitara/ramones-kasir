@@ -10,6 +10,7 @@ import { ExpensesPage } from './pages/ExpensesPage'
 import { ReportsPage } from './pages/ReportsPage'
 import { AttendanceReportPage } from './pages/AttendanceReportPage'
 import { AttendanceDetailPage } from './pages/AttendanceDetailPage'
+import { ProductDetailPage } from './pages/ProductDetailPage'
 import { Layout } from './components/Layout'
 import { PrivateRoute } from './components/PrivateRoute'
 
@@ -26,6 +27,7 @@ function App() {
                 <Route path="/" element={<DashboardPage />} />
                 <Route path="/absensi" element={<AttendancePage />} />
                 <Route path="/produk" element={<ProductsPage />} />
+                <Route path="/produk/:id" element={<ProductDetailPage />} />
                 <Route path="/penjualan" element={<SalesPage />} />
                 <Route path="/pengeluaran" element={<ExpensesPage />} />
               </Route>
